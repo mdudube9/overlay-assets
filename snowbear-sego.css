@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "MiSansCustom";
+  src:
+    url("https://mdudube9.github.io/overlay-assets/fonts/MiSans-Normal.woff2") format("woff2"),
+    url("https://mdudube9.github.io/overlay-assets/fonts/MiSans-Normal.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.username, .text, .amount {
+  font-family: "MiSansCustom", "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC",
+               "Noto Sans CJK SC", "Segoe UI", Arial, sans-serif !important;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.main-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Slide/blur animation (only transform/blur — opacity is handled by .is-visible) */
+@keyframes slide-in-blurred-bottom {
+  0% { transform: translateY(40px) scaleY(1.05); filter: blur(20px); }
+  100% { transform: translateY(0px) scaleY(1); filter: blur(0); }
+}
+
+.message {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  transition: opacity 220ms linear;
+  will-change: opacity;
+}
+
+.message.is-visible { opacity: 1; }
+
+/* Re-playable enter animation */
+.message.enter {
+  animation: slide-in-blurred-bottom 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+
+/* Backgrounds */
+.message.normal {
+  background-image: url("https://mdudube9.github.io/overlay-assets/images/message.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+}
+
+.message.gift {
+  background-image: url("https://mdudube9.github.io/overlay-assets/images/gift.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+}
+
+/* Glow Options */
+.username,
+.text,
+.amount {
+  text-shadow:
+    0 0 6px #0e1c44,
+    0 0 14px #0e1c44;
+}
+
+/* Username */
+.username {
+  position: absolute;
+  left: 70px;
+  bottom: 470px;
+  padding: 10px;
+
+  //font-size: 26pt !important;
+  font-size: 35pt;
+  color: #ffffff !important;
+
+  z-index: 5;
+}
+
+/* Message center container (your 86% fix) */
+.message-center {
+  position: absolute;
+  left: 50%;
+  top: 86%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  text-align: center;
+
+  z-index: 5;
+}
+
+/* Message text */
+.text {
+  font-size: 40pt !important;
+  color: #ffffff !important;
+}
+
+/* Amount (optional) */
+.amount {
+  position: absolute;
+  left: 1600px;
+  bottom: 470px;
+
+  font-size: 25pt !important;
+  color: #ffffff !important;
+
+  z-index: 5;
+}
